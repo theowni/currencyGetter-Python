@@ -8,7 +8,7 @@ SUPP_CURRENCIES = ["AUD", "CAD", "CHF", "CYP", "CZK", "DKK", "EEK",
 
 
 class Collector:
-    def __init__(self, _currencies, _base, _data, _direction):
+    def __init__(self, _currencies, _base, _data):
         self.currencies = _currencies
         self.base = _base
         self.data = _data  # Currencies(_base, _tick, _direction)
@@ -20,7 +20,7 @@ class Collector:
         if self.data.direction == 1:
             params = {
                 'base': self.base,
-                'symbols': self.currencies
+                'symbols': ','.join(self.currencies)
             }
 
             while curDate <= _endDate:
@@ -52,8 +52,8 @@ class Collector:
                     realDate = datetime.datetime.strptime(resJson['date'],
                                                           "%Y-%m-%d")
 
-                    for k, v in resJson['rates'].items():
-                        self.data.AddRate(k, v, realDate)
+                    v = resJson['rates'].items()[0][1]
+                    self.data.AddRate(currency, v, realDate)
 
                 curDate += self.tick
 

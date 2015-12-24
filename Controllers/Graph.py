@@ -48,5 +48,9 @@ class Graph:
 
         plt.xlabel('Dates')
         plt.ylabel('Rates')
-        plt.title('How much You can buy for 1 ' + self.data.base)
+        if self.data.direction == 1:
+            plt.title('Exchange rate for 1 ' + self.data.base)
+        elif self.data.direction == -1:
+            plt.title('Exchange rate in ' + self.data.base)
+
         plt.show()
