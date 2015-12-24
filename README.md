@@ -9,10 +9,10 @@ Usage
 
 * Now, there is just app.py to run
 
-* You can customize that file using Your currencies
+* You can customize that file using Your data
 
 
-* There is now warranty, check fixer.io and license
+* There is no warranty, check fixer.io and license
 
 
 License
